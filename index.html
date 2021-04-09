@@ -31,9 +31,13 @@
       <div class="movie-card" v-for="movie in movies" v-if="movie.poster_path != null">
         <div class="movie-cover">
           <img :src=" 'https://image.tmdb.org/t/p/w300' + movie.poster_path " alt="movie-cover">
-        </div>
-        <div class="movie-info">
-
+          <p class="titolo_1"><span>{{movie.title}}</span></p>
+          <div class="movie-info">
+            <p class="titolo"><strong>Titolo:</strong> <span>{{movie.title}}</span></p>
+            <p class="titolo-originale"><strong>Titolo originale:</strong> <span>{{movie.original_title}}</span></p>
+            <div class="stars"></div>
+            <p class="overview"><strong>Overview: </strong><span>{{movie.overview}}</span> </p>
+          </div>
         </div>
       </div>
     </div>
