@@ -3,3 +3,47 @@
   margin: 0;
   box-sizing: border-box;
 }
+body {
+  background-color: #1e2d3b;
+}
+header {
+  height: 70px;
+  width: 100%;
+  background-color: #2E3A46;
+  display: flex;
+  align-items: center;
+}
+header .container-sx {
+  width: 50%;
+  padding-left: 15px;
+  display: flex;
+}
+header .container-sx img {
+  height: 50px;
+}
+header .container-dx {
+  display: flex;
+  justify-content: flex-end;
+  width: 50%;
+  padding-right: 15px;
+}
+.movie-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+}
+.movie-card {
+    display: flex;
+    justify-content: flex-start;
+    flex-direction: column;
+    align-items: center;
+    flex-basis: 345px;
+    padding: 20px;
+    margin: 10px 20px;
+    text-align: center;
+
+}
+.movie-card img {
+  max-width: 100%;
+}
