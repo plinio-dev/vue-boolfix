@@ -28,9 +28,9 @@
     </header>
 
     <div class="movie-container">
-      <div class="movie-card">
+      <div class="movie-card" v-for="movie in movies" v-if="movie.poster_path != null">
         <div class="movie-cover">
-          <img src="img/cover.jpeg" alt="">
+          <img :src=" 'https://image.tmdb.org/t/p/w300' + movie.poster_path " alt="movie-cover">
         </div>
         <div class="movie-info">
 

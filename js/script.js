@@ -18,7 +18,7 @@ var app = new Vue ({
   data: {
     apiKey: 'e7044893bb18dd7fd9107b2723c42676',
     userQuery: "",
-
+    movies: [ ],
   },
   methods: {
     movieSearch: function () {
@@ -31,8 +31,11 @@ var app = new Vue ({
           language: 'it-IT'
         }
       })
-      .then(function (response) {
+      .then((response) => {
         console.log(response.data);
+        const results = response.data.results;
+        this.movies = results;
+        this.userQuery = "";
       });
 
     }
