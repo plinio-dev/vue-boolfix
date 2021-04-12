@@ -36,10 +36,10 @@
           <div class="img-wrapper">
             <img :src=" 'https://image.tmdb.org/t/p/w500' + movie.poster_path " alt="movie-cover">
           </div>
-          <p class="titolo_1"><span>{{movie.title}} {{movie.original_name}}</span></p>
+            <p class="titolo_1"><span>{{movie.title}} {{movie.name}}</span></p>
           <div class="movie-info">
-            <p class="titolo"><strong>Titolo:</strong> <span>{{movie.title}} {{movie.original_name}}</span></p>
-            <p class="titolo-originale"><strong>Titolo originale:</strong> <span>{{movie.original_title}}</span></p>
+            <p class="titolo"><strong>Titolo:</strong> <span>{{movie.title}} {{movie.name}}</span></p>
+            <p class="titolo-originale"><strong>Titolo originale:</strong> <span>{{movie.original_title}} {{movie.original_name}}</span></p>
             <div class="lingua"> <p><strong>Lingua:</strong> <span>{{movie.original_language}} </span></p>
             <img id="flag" :src="'flags/' + movie.original_language + '.png'" alt=""></span></div>
             <p class="anno"><strong>Data di uscita:</strong> <span>{{movie.release_date}}</span></p>

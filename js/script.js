@@ -20,8 +20,6 @@ var app = new Vue ({
     apiKey: 'e7044893bb18dd7fd9107b2723c42676',
     userQuery: "",
     movies: [ ],
-    // ratedStars:  0,
-    // emptyStars: 3,
   },
   methods: {
     movieSearch: function () {
@@ -37,7 +35,6 @@ var app = new Vue ({
       .then((response) => {
         console.log(response.data);
         this.movies = response.data.results;
-        // this.userQuery = "";
         this.rateModify();
       });
 
@@ -53,7 +50,6 @@ var app = new Vue ({
       .then((response) => {
         console.log(response.data);
         this.movies = response.data.results;
-        // this.userQuery = "";
         this.rateModify();
       });
     },
