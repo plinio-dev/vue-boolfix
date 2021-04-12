@@ -150,3 +150,10 @@ header .container-dx {
  .rate-star {
   color: coral;
  }
+#flag {
+  width: 11%;
+  margin-left: 5px;
+}
+.lingua {
+  display: flex;
+}
