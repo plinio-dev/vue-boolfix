@@ -8,8 +8,11 @@
   <script src="https://cdn.jsdelivr.net/npm/vue@2.6.12/dist/vue.js"></script>
   <!-- axios -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.1/axios.min.js" integrity="sha512-bZS47S7sPOxkjU/4Bt0zrhEtWx0y0CRkhEp8IckzK+ltifIIE9EMIMTuT/mEzoIMewUINruDBIR/jJnbguonqQ==" crossorigin="anonymous"></script>
+  <!-- fontawesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w==" crossorigin="anonymous" />
   <!-- google fonts -->
-
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/style.css">
   <title>Boolfix</title>
 </head>
@@ -18,24 +21,32 @@
 
     <header>
       <div class="container-sx">
-        <img src="img/netflix-logo.png" alt="logo">
+        <a href="#"><img src="img/netflix-logo.png" alt="logo"></a>
         <div class="menu"></div>
       </div>
       <div class="container-dx">
-        <input id="search" v-model="userQuery" @keydown.13="movieSearch" type="text" placeholder="search a movie" >
-        <button type="button" name="button" @click="movieSearch">Cerca</button>
+        <input id="search-input" v-model="userQuery" @keydown.13="movieSearch" type="text" placeholder="search a movie" >
+        <button id="search-btn" type="button" name="button" @click="movieSearch"><i class="fas fa-search searc-icon"></i></button>
       </div>
     </header>
 
     <div class="movie-container">
       <div class="movie-card" v-for="movie in movies" v-if="movie.poster_path != null">
         <div class="movie-cover">
-          <img :src=" 'https://image.tmdb.org/t/p/w300' + movie.poster_path " alt="movie-cover">
+          <div class="img-wrapper">
+            <img :src=" 'https://image.tmdb.org/t/p/w500' + movie.poster_path " alt="movie-cover">
+          </div>
           <p class="titolo_1"><span>{{movie.title}}</span></p>
           <div class="movie-info">
             <p class="titolo"><strong>Titolo:</strong> <span>{{movie.title}}</span></p>
             <p class="titolo-originale"><strong>Titolo originale:</strong> <span>{{movie.original_title}}</span></p>
-            <div class="stars"></div>
+            <p class="lingua"><strong>Lingua:</strong> <span>{{movie.original_language}}</span></p>
+            <p class="anno"><strong>Data di uscita:</strong> <span>{{movie.release_date}}</span></p>
+            <div class="stars">
+              <strong>Voto:</strong>
+              <span v-for="star in movie.vote_average"><i class="fas fa-star rate-star"></i></span><!---
+              ---><span v-for="emptyStar in (5 - movie.vote_average)"><i class="far fa-star"></i></span>
+            </div>
             <p class="overview"><strong>Overview: </strong><span>{{movie.overview}}</span> </p>
           </div>
         </div>

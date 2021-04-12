@@ -19,6 +19,8 @@ var app = new Vue ({
     apiKey: 'e7044893bb18dd7fd9107b2723c42676',
     userQuery: "",
     movies: [ ],
+    // ratedStars:  0,
+    // emptyStars: 3,
   },
   methods: {
     movieSearch: function () {
@@ -33,11 +35,16 @@ var app = new Vue ({
       })
       .then((response) => {
         console.log(response.data);
-        const results = response.data.results;
-        this.movies = results;
-        this.userQuery = "";
+        this.movies = response.data.results;
+        // this.userQuery = "";
+        this.rateModify();
       });
 
+    },
+    rateModify: function () {
+      this.movies.forEach(element => {
+        element.vote_average = Math.ceil(element.vote_average / 2);
+      });
     }
   },
 

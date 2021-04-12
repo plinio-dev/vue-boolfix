@@ -4,28 +4,34 @@
   box-sizing: border-box;
 }
 body {
+  font-family: 'Open Sans', sans-serif;
   background-color: #1e2d3b;
 }
 /* type */
-.titolo_1 {
+.titolo_1 span{
   text-align: center;
   font-size: 18px;
-  color: #ffffff75;
+  color: #ffffff;
   padding-top: 5px;
   display: -webkit-box;
   -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
   overflow: hidden;
 }
-.overview strong, .titolo strong, .titolo-originale strong   {
+strong {
+  font-size: 13px;
+  color: #ffffff75;
+}
+span  {
+  font-size: 15px;
   color: #ffffff;
 }
-.overview span, .titolo span, .titolo-originale span {
-  color: #ffffff75;
+.titolo span {
+  text-transform: uppercase;
 }
 .movie-info .overview {
   display: -webkit-box;
-  -webkit-line-clamp: 14;
+  -webkit-line-clamp: 10;
   -webkit-box-orient: vertical;
   overflow: hidden;
   color: #ffffff75;
@@ -44,8 +50,14 @@ header .container-sx {
   width: 50%;
   padding-left: 15px;
   display: flex;
+  flex-direction: column;
+  align-content: center;
 }
-header .container-sx img {
+header .container-sx a {
+  display: flex;
+  width: 20%;
+}
+header .container-sx a img {
   height: 50px;
 }
 header .container-dx {
@@ -54,7 +66,42 @@ header .container-dx {
   width: 50%;
   padding-right: 15px;
 }
+
+/* campo search */
+#search-btn {
+  background-color: transparent;
+  border: none;
+  margin-left: 6px;
+  border-radius: 6px;
+  cursor: pointer;
+  padding: 6px 10px;
+  color: gray;
+}
+.searc-icon {
+  font-size:18px;
+}
+#search-btn, #search-input{
+  outline: none;
+  box-shadow: none;
+}
+#search-btn:hover {
+  background-color: #00000038;
+  transition: linear 0.2s;
+}
+
+#search-input {
+  padding-left: 10px;
+  color: gray;
+  border: 1px solid gray;
+  border-radius: 20px;
+  background-color: transparent;
+  font-size: 12px;
+}
+
+/* campo search */
+
 .movie-container {
+  padding-top: 20px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -66,7 +113,7 @@ header .container-dx {
   flex-direction: column;
   flex-wrap: wrap;
   width: 250px;
-  height: 400px;
+  height: 420px;
   padding: 20px;
   margin: 10px 20px;
   /* border: 1px solid yellow; */
@@ -74,8 +121,13 @@ header .container-dx {
   position: relative;
   cursor: pointer;
 }
+.img-wrapper {
+  height: 320px;
+  overflow: hidden;
+}
 .movie-card img {
   max-width: 100%;
+
 }
 .movie-info {
   position: absolute;
@@ -88,12 +140,13 @@ header .container-dx {
   z-index: 0;
   background-color: #2e3a46;
 }
-
-
 .movie-card.movie-cover img:hover{
   opacity: 0;
 }
 .movie-info:hover, .movie-card.movie-cover img:hover {
    opacity: 1;
    transition: opacity linear 0.2s;
+ }
+ .rate-star {
+  color: coral;
  }
