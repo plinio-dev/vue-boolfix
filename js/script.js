@@ -16,6 +16,7 @@ var app = new Vue ({
 
   el: "#app",
   data: {
+    baseurl: 'https://api.themoviedb.org/3/search/',
     apiKey: 'e7044893bb18dd7fd9107b2723c42676',
     userQuery: "",
     movies: [ ],
@@ -24,7 +25,7 @@ var app = new Vue ({
   },
   methods: {
     movieSearch: function () {
-      axios.get('https://api.themoviedb.org/3/search/movie?', {
+      axios.get(this.baseurl + 'movie', {
         params: {
           api_key: this.apiKey,
           query: this.userQuery,
@@ -40,7 +41,23 @@ var app = new Vue ({
         this.rateModify();
       });
 
+      axios.get(this.baseurl + 'tv', {
+        params: {
+          api_key: this.apiKey,
+          query: this.userQuery,
+          page: 1,
+          include_adult: false,
+          language: 'it-IT'
+        }
+      })
+      .then((response) => {
+        console.log(response.data);
+        this.movies = response.data.results;
+        // this.userQuery = "";
+        this.rateModify();
+      });
     },
+
     rateModify: function () {
       this.movies.forEach(element => {
         element.vote_average = Math.ceil(element.vote_average / 2);
