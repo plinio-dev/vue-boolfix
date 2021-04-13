@@ -54,8 +54,8 @@ header {
   flex-direction: column;
   align-content: center;
 }
-.logo {
-  /* display: flex; */
+.logo a {
+  display: flex;
   /* width: 20%; */
 }
 header .container-sx a img {
