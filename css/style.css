@@ -40,27 +40,28 @@ span  {
 
 
 header {
-  height: 70px;
+  height: 100%;
   width: 100%;
   background-color: #2E3A46;
   display: flex;
   align-items: center;
+  padding: 10px;
 }
-header .container-sx {
+.container-sx {
   width: 50%;
   padding-left: 15px;
   display: flex;
   flex-direction: column;
   align-content: center;
 }
-header .container-sx a {
-  display: flex;
-  width: 20%;
+.logo {
+  /* display: flex; */
+  /* width: 20%; */
 }
 header .container-sx a img {
   height: 50px;
 }
-header .container-dx {
+.container-dx {
   display: flex;
   justify-content: flex-end;
   width: 50%;
@@ -157,3 +158,31 @@ header .container-dx {
 .lingua {
   display: flex;
 }
+.fa-flag {
+  margin-left: 5px;
+}
+
+
+/* mediaquery */
+@media screen and (max-width: 425px) {
+    .container-dx {
+      padding-top: 15px;
+      padding-left: 10px;
+      width: 100%;
+    }
+    #search-input {
+      width: 100%;
+    }
+    header {
+      display: block;
+    }
+    .container-sx {
+      padding-left: 0;
+      padding-top: 20px;
+      margin: auto;
+      display: flex;
+      justify-content: center;
+      flex-direction: row;
+    }
+}
+/* mediaquery */
