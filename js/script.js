@@ -35,34 +35,27 @@ var app = new Vue ({
     movieSearch: function () {
       if (this.userQuery != " ") {
 
+        const params = {
+          api_key: this.apiKey,
+          query: this.userQuery,
+          page: 1,
+          include_adult: false,
+          language: 'it-IT'
+        };
+        // console.log(params);
+
         this.movies = [];
 
-        axios.get(this.baseurl + 'movie', {
-          params: {
-            api_key: this.apiKey,
-            query: this.userQuery,
-            page: 1,
-            include_adult: false,
-            language: this.language
-          }
-        })
+        axios.get(this.baseurl + 'movie', { params })
         .then((response) => {
-          console.log(response.data);
+          // console.log(params);
           this.movies.push(...response.data.results);
           this.rateModify();
         });
 
-        axios.get(this.baseurl + 'tv', {
-          params: {
-            api_key: this.apiKey,
-            query: this.userQuery,
-            page: 1,
-            include_adult: false,
-            language: 'it-IT'
-          }
-        })
+        axios.get(this.baseurl + 'tv', { params })
         .then((response) => {
-          console.log(response.data);
+          // console.log(response.data);
           this.movies.push(...response.data.results);
           this.rateModify();
         });
