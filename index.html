@@ -31,10 +31,10 @@
     </header>
 
     <div class="movie-container">
-      <div class="movie-card" v-for="movie in movies" v-if="movie.poster_path != null">
+      <div class="movie-card" v-for="movie in movies" >
         <div class="movie-cover">
           <div class="img-wrapper">
-            <img :src=" 'https://image.tmdb.org/t/p/w500' + movie.poster_path " alt="movie-cover">
+            <img :src=" movie.poster_path ? 'https://image.tmdb.org/t/p/w500' + movie.poster_path : 'https://via.placeholder.com/500x750/2e3a46?text=No+poster+image+yet'  " alt="movie-cover">
           </div>
             <p class="titolo_1"><span>{{movie.title}} {{movie.name}}</span></p>
           <div class="movie-info">
@@ -42,7 +42,8 @@
             <p class="titolo-originale"><strong>Titolo originale:</strong> <span>{{movie.original_title}} {{movie.original_name}}</span></p>
             <div class="lingua">
               <p><strong>Lingua originale:</strong></p>
-            <img id="flag" :src="'flags/' + movie.original_language + '.png'" alt="">
+              <img id="flag" v-if="flags.includes(movie.original_language) ":src="'flags/' + movie.original_language + '.png'" alt="">
+              <i v-else class="fas fa-flag"></i>
             </div>
             <p class="anno"><strong>Data di uscita:</strong> <span>{{movie.release_date}}</span></p>
             <div class="stars">
@@ -50,7 +51,7 @@
               <span v-for="star in movie.vote_average"><i class="fas fa-star rate-star"></i></span><!---
               ---><span v-for="emptyStar in (5 - movie.vote_average)"><i class="far fa-star"></i></span>
             </div>
-            <p class="overview"><strong>Overview: </strong><span>{{movie.overview}}</span> </p>
+            <p v-if="movie.overview" class="overview"><strong>Overview: </strong><span>{{movie.overview}}</span> </p>
           </div>
         </div>
       </div>

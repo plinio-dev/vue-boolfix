@@ -20,38 +20,55 @@ var app = new Vue ({
     apiKey: 'e7044893bb18dd7fd9107b2723c42676',
     userQuery: "",
     movies: [ ],
+    language: 'it-IT',
+    flags:[
+      'de',
+      'it',
+      'en',
+      'es',
+      'fr',
+      'ja',
+      'us',
+    ],
   },
   methods: {
     movieSearch: function () {
-      axios.get(this.baseurl + 'movie', {
-        params: {
-          api_key: this.apiKey,
-          query: this.userQuery,
-          page: 1,
-          include_adult: false,
-          language: 'it-IT'
-        }
-      })
-      .then((response) => {
-        console.log(response.data);
-        this.movies = response.data.results;
-        this.rateModify();
-      });
+      if (this.userQuery != " ") {
 
-      axios.get(this.baseurl + 'tv', {
-        params: {
-          api_key: this.apiKey,
-          query: this.userQuery,
-          page: 1,
-          include_adult: false,
-          language: 'it-IT'
-        }
-      })
-      .then((response) => {
-        console.log(response.data);
-        this.movies = response.data.results;
-        this.rateModify();
-      });
+        this.movies = [];
+
+        axios.get(this.baseurl + 'movie', {
+          params: {
+            api_key: this.apiKey,
+            query: this.userQuery,
+            page: 1,
+            include_adult: false,
+            language: this.language
+          }
+        })
+        .then((response) => {
+          console.log(response.data);
+          this.movies.push(...response.data.results);
+          this.rateModify();
+        });
+
+        axios.get(this.baseurl + 'tv', {
+          params: {
+            api_key: this.apiKey,
+            query: this.userQuery,
+            page: 1,
+            include_adult: false,
+            language: 'it-IT'
+          }
+        })
+        .then((response) => {
+          console.log(response.data);
+          this.movies.push(...response.data.results);
+          this.rateModify();
+        });
+
+      }
+
     },
 
     rateModify: function () {
