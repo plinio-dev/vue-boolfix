@@ -34,7 +34,7 @@
 
     <div class="movie-container" v-if="movies.length > 0" >
       <div class="movietitle">
-        <h1>Risultati per "{{userQuery}}" in films </h1>
+        <h3>Risultati per "{{userQuery}}" in films </h3>
       </div>
       <div class="movie-card" v-for="movie in movies" >
         <div class="movie-cover">
@@ -64,16 +64,16 @@
 
     <div class="serie-container" v-if="series.length > 0" >
       <div class="serie-title">
-        <h1>Risultati per "{{userQuery}}" in serie tv </h1>
+        <h3>Risultati per "{{userQuery}}" in serie tv </h3>
       </div>
       <div class="movie-card" v-for="serie in series" >
         <div class="movie-cover">
           <div class="img-wrapper">
             <img :src=" serie.poster_path ? 'https://image.tmdb.org/t/p/w500' + serie.poster_path : 'https://via.placeholder.com/500x750/2e3a46?text=No+poster+image+yet'  " alt="serie-cover">
           </div>
-            <p class="titolo_1"><span>{{serie.title}} {{serie.name}}</span></p>
+            <p class="titolo_1"><span>{{serie.name}}</span></p>
           <div class="movie-info">
-            <p class="titolo"><strong>Titolo:</strong> <span>{{serie.title}} {{serie.name}}</span></p>
+            <p class="titolo"><strong>Titolo:</strong> <span> {{serie.name}}</span></p>
             <p class="titolo-originale"><strong>Titolo originale:</strong> <span>{{serie.original_title}} {{serie.original_name}}</span></p>
             <div class="lingua">
               <p><strong>Lingua originale:</strong></p>
