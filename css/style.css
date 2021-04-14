@@ -100,7 +100,7 @@ header .container-sx a img {
 
 /* campo search */
 
-.movie-container {
+.movie-container, .serie-container {
   padding-top: 20px;
   display: flex;
   justify-content: center;
@@ -160,6 +160,12 @@ header .container-sx a img {
   margin-left: 5px;
 }
 
+.serie-title, .movietitle {
+  display: block;
+  width: 100%;
+  padding: 46px;
+  color: #ffffff;
+}
 
 /* mediaquery */
 @media screen and (max-width: 425px) {

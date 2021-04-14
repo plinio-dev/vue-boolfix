@@ -32,7 +32,10 @@
       </div>
     </header>
 
-    <div class="movie-container">
+    <div class="movie-container" v-if="movies.length > 0" >
+      <div class="movietitle">
+        <h1>Risultati per "{{userQuery}}" in films </h1>
+      </div>
       <div class="movie-card" v-for="movie in movies" >
         <div class="movie-cover">
           <div class="img-wrapper">
@@ -54,6 +57,36 @@
               ---><span v-for="emptyStar in (5 - movie.vote_average)"><i class="far fa-star"></i></span>
             </div>
             <p v-if="movie.overview" class="overview"><strong>Overview: </strong><span>{{movie.overview}}</span> </p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="serie-container" v-if="series.length > 0" >
+      <div class="serie-title">
+        <h1>Risultati per "{{userQuery}}" in serie tv </h1>
+      </div>
+      <div class="movie-card" v-for="serie in series" >
+        <div class="movie-cover">
+          <div class="img-wrapper">
+            <img :src=" serie.poster_path ? 'https://image.tmdb.org/t/p/w500' + serie.poster_path : 'https://via.placeholder.com/500x750/2e3a46?text=No+poster+image+yet'  " alt="serie-cover">
+          </div>
+            <p class="titolo_1"><span>{{serie.title}} {{serie.name}}</span></p>
+          <div class="movie-info">
+            <p class="titolo"><strong>Titolo:</strong> <span>{{serie.title}} {{serie.name}}</span></p>
+            <p class="titolo-originale"><strong>Titolo originale:</strong> <span>{{serie.original_title}} {{serie.original_name}}</span></p>
+            <div class="lingua">
+              <p><strong>Lingua originale:</strong></p>
+              <img id="flag" v-if="flags.includes(serie.original_language) ":src="'flags/' + serie.original_language + '.png'" alt="">
+              <i v-else class="fas fa-flag"></i>
+            </div>
+            <p class="anno"><strong>Data di uscita:</strong> <span>{{serie.release_date}}</span></p>
+            <div class="stars">
+              <strong>Voto:</strong>
+              <span v-for="star in serie.vote_average"><i class="fas fa-star rate-star"></i></span><!---
+              ---><span v-for="emptyStar in (5 - serie.vote_average)"><i class="far fa-star"></i></span>
+            </div>
+            <p v-if="serie.overview" class="overview"><strong>Overview: </strong><span>{{serie.overview}}</span> </p>
           </div>
         </div>
       </div>

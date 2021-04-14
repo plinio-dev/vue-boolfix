@@ -20,6 +20,7 @@ var app = new Vue ({
     apiKey: 'e7044893bb18dd7fd9107b2723c42676',
     userQuery: "",
     movies: [ ],
+    series:[ ],
     language: 'it-IT',
     flags:[
       'de',
@@ -45,19 +46,22 @@ var app = new Vue ({
         // console.log(params);
 
         this.movies = [];
+        this.series = [];
 
         axios.get(this.baseurl + 'movie', { params })
         .then((response) => {
           // console.log(params);
-          this.movies.push(...response.data.results);
+          // this.movies.push(...response.data.results);
+          this.movies = response.data.results;
           this.rateModify();
         });
 
         axios.get(this.baseurl + 'tv', { params })
         .then((response) => {
           // console.log(response.data);
-          this.movies.push(...response.data.results);
-          this.rateModify();
+          // this.series.push(...response.data.results);
+          this.series = response.data.results;
+          this.rateModifySeries();
         });
 
       }
@@ -66,6 +70,11 @@ var app = new Vue ({
 
     rateModify: function () {
       this.movies.forEach(element => {
+        element.vote_average = Math.ceil(element.vote_average / 2);
+      });
+    },
+    rateModifySeries: function () {
+      this.series.forEach(element => {
         element.vote_average = Math.ceil(element.vote_average / 2);
       });
     }
